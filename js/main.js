@@ -40,3 +40,5 @@ $('#analyze-video').on('click',function()
     });
 
 })
+
+
