@@ -43,3 +43,9 @@
   width:100%;
 
 }
+
+.waves-effect{
+    margin-right: 36px !important;
+    /* margin-bottom: 0px; */
+    margin-top: -6px !important;
+}

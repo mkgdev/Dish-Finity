@@ -19,7 +19,7 @@ $('#analyze-audio').on('click',function()
 
 
 }
-});
+);
 
 $('#analyze-video').on('click',function()
 {
