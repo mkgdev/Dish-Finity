@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="47235731207-s75elisk05tqp1esob1e4j3n17fjkn8c.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload</title>
+
+</head>
+<body>
+
+<script>
+
+
+    function setElements(isLoggedIn){
+        if(isLoggedIn){
+
+            document.getElementById('logout').style.display="block";
+        }
+        else{
+
+            document.getElementById('logout').style.display="block";
+
+        }
+    }
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+            window.location.pathname="/index";
+        });
+    }
+    function onLoad() {
+        gapi.load('auth2', function() {
+
+            gapi.auth2.init();
+
+
+        });
+    }
+
+</script>
+
+<nav>
+    <div class="nav-wrapper">
+        <div class="container">
+            <a  class="brand-logo">Rekognition</a>
+
+            <ul id="nav-mobile" class="right ">
+                <li >
+                    <a id="logout" onclick="signOut()" >Logout</a>
+
+
+                </li>
+                <li>
+                    <a href="lex" target="_blank">Lex Bot</a>
+                </li>
+                <div id="fb-btn" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email,user_birthday"
+                     onlogin="checkLoginState()"></div>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="row" style="margin-top:20px">
+    <div class="col s12 m12 l12 ">
+        <div class="card">
+            <div class="card-content text-responsive center-align orange lighten-2">
+                <p>Select the action you want to perform</p>
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a href="#test4"> Upload Image</a></li>
+                    <li class="tab"><a href="#test5">Upload Video</a></li>
+
+                </ul>
+            </div>
+            <div class="card-content grey lighten-2 center-align">
+                <div id="test4">
+                    Select the image on which you need to run rekognition
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <img id="target" />
+
+                    <form>
+                        <input id="src" type="file" name="image" >
+                        <input  class="btn waves-effect hoverable red" id="analyze" type="button" value='Upload Image'>
+                        <br>
+                        <br>
+                        <a class="waves-effect waves-light btn modal-trigger" id="modal" style="display: none" href="#modal1">Show Results</a>
+                    </form>
+
+                </div>
+                <!-- Modal Structure for image detection -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Result</h4>
+                        <table class="highlight">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Confidence</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody id="table-body">
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                    </div>
+                </div>
+
+
+
+
+                <div id="test5">Select the video on which you need to run rekognition  <br> <br> <br> <br>
+
+
+                    <form >
+                        <input id="src-video" type="file" name="video" >
+                        <input  class="btn waves-effect hoverable red" id="analyze-video" type="button" value='Upload Video'>
+                        <br>
+                        <br>
+                        <a class="waves-effect waves-light btn modal-trigger" id="modal" style="display: none" href="#modal1">Show Results</a>
+                    </form>
+                    <br>
+
+
+                </div>
+                <!-- Modal Structure for video detection -->
+                <div id="modal2" class="modal">
+                    <div class="modal-content" id="v-modal">
+                        <h4>Result</h4>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+
+<script>
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    $(document).ready(function(){
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+    // $("#modal").on("click", function(){
+    //     $.ajax({
+    //       type: "GET",
+    //            url: "/analyze/modal_data",
+    //            success: function(data) {
+    //                console.log(data);
+    //                alert('Success!');
+    //            },
+    //     });
+    // });
+    function showImage(src,target) {
+        var fr=new FileReader();
+        // when image is loaded, set the src of the image where you want to display it
+        fr.onload = function(e) {
+            target.src = this.result;
+
+        };
+        src.addEventListener("change",function() {
+            // fill fr with image data
+            fr.readAsDataURL(src.files[0]);
+        });
+
+    }
+    var src = document.getElementById("src");
+    var target = document.getElementById("target");
+    showImage(src,target);
+    document.getElementById("target").style.width="200px";
+    // console.log(document.getElementById("src").value);
+    $("#analyze").on("click", function(){
+        var path=document.getElementById("src").value;
+        $.ajax({
+            type: "POST",
+            url: "/analyze/amazon-rekog",
+            data: { image: path },
+            success: function(data) {
+                //  console.log(data.Labels[0]);
+
+                alert('Success!');
+
+                document.getElementById("modal").style.display="inline-block";
+                data.Labels.forEach(function(data)
+                {
+                    $('#table-body').append("<tr><th>"+data.Name+"</th><th>"+data.Confidence+"</th></tr>");
+                });
+            },
+
+        });
+    });
+    $("#video").on("click", function(){
+        var path=document.getElementById("video_src").value;
+        var option=document.getElementById("select").value;
+        document.getElementById("modal-video").style.display="none";
+        console.log(path+" "+option);
+        $.ajax({
+            type: "POST",
+            url: "/analyze/video",
+            data: { video: path, type:option },
+            success: function(data) {
+                console.log(data);
+                alert('Success!');
+                document.getElementById("modal-video").style.display = "inline-block";
+                if (option == "1") {
+                    $('#v-modal-table').remove();
+                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Description</th> <th>Start</th> <th>End</th> <th>Confidence</th> </tr> </thead> </table>");
+                    var desc; // description
+                    var start; // startitme
+                    var end;  // end time
+                    var conf; // confidence
+                    data.forEach(function (label) {
+                        desc = label.entity.description + ' occurs at:';
+                        label.segments.forEach(segment => {
+                            let time = segment.segment;
+                            if (time.startTimeOffset.seconds === undefined) {
+                                time.startTimeOffset.seconds = 0;
+                            }
+                            if (time.startTimeOffset.nanos === undefined) {
+                                time.startTimeOffset.nanos = 0;
+                            }
+                            if (time.endTimeOffset.seconds === undefined) {
+                                time.endTimeOffset.seconds = 0;
+                            }
+                            if (time.endTimeOffset.nanos === undefined) {
+                                time.endTimeOffset.nanos = 0;
+                            }
+                            start = time.startTimeOffset.seconds + "."+ (time.startTimeOffset.nanos / 1e6).toFixed(0) + 's';
+                            end = time.endTimeOffset.seconds + "."+(time.endTimeOffset.nanos / 1e6).toFixed(0) + 's';
+                            conf = segment.confidence;
+                        })
+                        $('#v-modal-table').append("<tbody> <tr> <td>" + desc + "</td> <td>" + start + "</td> <td>" + end + "</td> <td>" + conf + "</td> </tr> </tbody>");
+                    });
+                }
+                else if (option == "2") {
+                    $('#v-modal-table').remove();
+                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Description</th> <th>Start</th> <th>End</th> <th>Confidence</th> </tr> </thead> </table>");
+                    var desc; // description
+                    var start; // startitme
+                    var end;  // end time
+                    var conf; // confidence
+                    data.forEach(function (label) {
+                        desc = label.entity.description + ' occurs at:';
+                        label.segments.forEach(segment => {
+                            let time = segment.segment;
+                            if (time.startTimeOffset.seconds === undefined) {
+                                time.startTimeOffset.seconds = 0;
+                            }
+                            if (time.startTimeOffset.nanos === undefined) {
+                                time.startTimeOffset.nanos = 0;
+                            }
+                            if (time.endTimeOffset.seconds === undefined) {
+                                time.endTimeOffset.seconds = 0;
+                            }
+                            if (time.endTimeOffset.nanos === undefined) {
+                                time.endTimeOffset.nanos = 0;
+                            }
+                            start = time.startTimeOffset.seconds + "."+(time.startTimeOffset.nanos / 1e6).toFixed(0) + 's';
+                            end = time.endTimeOffset.seconds + "."+ (time.endTimeOffset.nanos / 1e6).toFixed(0) + 's';
+                            conf = segment.confidence;
+                        })
+                        $('#v-modal-table').append("<tbody> <tr> <td>" + desc + "</td> <td>" + start + "</td> <td>" + end + "</td> <td>" + conf + "</td> </tr> </tbody>");
+                    });
+                }
+                else if (option == "3") {
+                    $('#v-modal-table').remove();
+                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Scene</th> <th>Start</th> <th>End</th> </tr> </thead> </table>");
+                    var scene;
+                    var start;
+                    var end;
+                    if (data.length === 1) {
+                        console.log(`The entire video is one shot.`);
+                    }
+                    else {
+                        data.forEach((shot, shotIdx) => {
+                            scene = "Scene " + shotIdx + " occurs from:"
+                            if(shot.startTimeOffset === undefined
+                            )
+                            {
+                                shot.startTimeOffset = {};
+                            }
+                            if (shot.endTimeOffset === undefined) {
+                                shot.endTimeOffset = {};
+                            }
+                            if (shot.startTimeOffset.seconds === undefined) {
+                                shot.startTimeOffset.seconds = 0;
+                            }
+                            if (shot.startTimeOffset.nanos === undefined) {
+                                shot.startTimeOffset.nanos = 0;
+                            }
+                            if (shot.endTimeOffset.seconds === undefined) {
+                                shot.endTimeOffset.seconds = 0;
+                            }
+                            if (shot.endTimeOffset.nanos === undefined) {
+                                shot.endTimeOffset.nanos = 0;
+                            }
+                            start = shot.startTimeOffset.seconds + "."+(shot.startTimeOffset.nanos / 1e6).toFixed(0) + "s";
+                            end = shot.endTimeOffset.seconds + "."+(shot.endTimeOffset.nanos / 1e6).toFixed(0) + "s";
+                            $('#v-modal-table').append("<tbody> <tr> <td>" + scene + "</td> <td>" + start + "</td> <td>" + end + "</td></tr> </tbody>");
+                        })
+                        ;
+                    }
+                }
+                else if (option == "4") {
+                    $('#v-modal-table').remove();
+                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Time</th> <th>Pornography liklihood</th></tr> </thead> </table>");
+                    var time;
+                    var likelihood;
+                    // Human-readable likelihoods
+                    const likelihoods = [
+                        'UNKNOWN',
+                        'VERY_UNLIKELY',
+                        'UNLIKELY',
+                        'POSSIBLE',
+                        'LIKELY',
+                        'VERY_LIKELY',
+                    ];
+                    data.forEach(result => {
+                        if (result.timeOffset === undefined) {
+                            result.timeOffset = {};
+                        }
+                        if (result.timeOffset.seconds === undefined) {
+                            result.timeOffset.seconds = 0;
+                        }
+                        if (result.timeOffset.nanos === undefined) {
+                            result.timeOffset.nanos = 0;
+                        }
+                        time = result.timeOffset.seconds + "."+(result.timeOffset.nanos / 1e6).toFixed(0) + "s";
+                        likelihood = result.pornographyLikelihood;
+                        $('#v-modal-table').append("<tbody> <tr> <td>" + time + "</td> <td>" + likelihood + "</td></tr> </tbody>");
+                    });
+                }
+            },
+
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script src="./js/main.js"></script>
+
+</html>
