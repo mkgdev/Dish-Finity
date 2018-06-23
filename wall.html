@@ -18,10 +18,13 @@
     <script src="js/socialyte.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="./javascript/particles.js"></script>
+
 </head>
 
-<body id="wall">
-
+<body id="wall" class="color1">
+      
+      
     <div class="container-fluid text-center " style="position:fixed; z-index: 100000; height:50%; width:50%; top:15%; right:0">
         <div  class="row ">
            <div  id="col" class="col-xs-12  col-xs-offset-3">
@@ -53,12 +56,14 @@
                <div class="switch">
 
                     <h5 style="display: inline">Safe Mode</h5>
+                   
                         <label>
                           Off
-                          <input type="checkbox">
+                          <input id="chekbox" type="checkbox">
                           <span class="lever"></span>
                           On
                         </label>
+                   
                       </div>
      
                   </div>
@@ -273,6 +278,7 @@
             <img src="img/load.gif" alt="loader">
         </div>
     </div>
+</body>
     <!-- Close #posts -->
     <!-- Modal container for settings--->
     <div id="settingsmodal" class="modal fade text-center">
@@ -281,7 +287,7 @@
             </div>
         </div>
     </div>
-</body>
+
 <canvas id="canvas" style="display:none"></canvas>
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -292,9 +298,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
 <!--     <script src="script/script.js"></script> -->
+<style>
+     .color1{
+        background:linear-gradient(to bottom, #FC5C7D , #6A82FB) !important ;
+     }
+    .color{
+        background:linear-gradient(to bottom, #22FF45 , #6A82FB) !important ;
+    }
+    </style>
+<script src="./javascript/particles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <script src="./js/webcam.js" />
 
+
+<script src="./javascript/script.js"></script>
+<script>
+    setInterval(fun, 1000);
+function fun(){
+  if($('#chekbox').is(':checked')) {
+    //document.getElementById('particles-js').style.backgroundColor('red');
+    $('body').removeClass('color1');
+    $('body').addClass('color');
+  }
+  else{
+    $('body').removeClass('color');
+    $('body').addClass('color1');
+  }
+}
+
+
+</script>
 <!-- Mirrored from socialyte.codeplus.it/wall.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jun 2018 13:34:05 GMT -->
 </html>
