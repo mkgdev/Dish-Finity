@@ -10,6 +10,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Upload</title>
 
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css">
+    <script src="lib/jquery-3.2.0.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-switch/css/bootstrap-switch.min.css">
+    <script src="lib/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="https://twemoji.maxcdn.com/twemoji.min.js"></script>
+    <script src="js/lazy-load.min.js"></script>
+    <script src="js/socialyte.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+
 </head>
 <body>
 
@@ -46,31 +58,79 @@
 
 </script>
 
-<nav>
-    <div class="nav-wrapper">
-        <div class="container">
-            <a  class="brand-logo">Rekognition</a>
+<header class="text-right">
+    <a href="upload.html" class="waves-effect waves-light btn" style="margin-right: 10px"> Upload</a>
 
-            <ul id="nav-mobile" class="right ">
-                <li >
-                    <a id="logout" onclick="signOut()" >Logout</a>
-
-
+    <div class="menu-icon">
+        <div class="dropdown">
+                <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <span class="hidden-xs hidden-sm">Settings</span> <i class="fa fa-cogs" aria-hidden="true"></i>
+                </span>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
+                <li>
+                    <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
+                        <div class="col-xs-4">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-xs-8 text-left">
+                            <span>Settings</span>
+                        </div>
+                    </a>
                 </li>
                 <li>
-                    <a href="lex" target="_blank">Lex Bot</a>
+                    <a href="#" title="Settings">
+                        <div class="col-xs-4">
+                            <i class="fa fa-question" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-xs-8 text-left">
+                            <span>FAQ</span>
+                        </div>
+                    </a>
                 </li>
-                <div id="fb-btn" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email,user_birthday"
-                     onlogin="checkLoginState()"></div>
-
-
+                <li>
+                    <a href="#" title="Settings">
+                        <div class="col-xs-4">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-xs-8 text-left">
+                            <span>Logout</span>
+                        </div>
+                    </a>
+                </li>
             </ul>
-
         </div>
     </div>
-</nav>
 
-<div class="row" style="margin-top:20px">
+
+    <div class="second-icon dropdown menu-icon">
+            <span class="dropdown-toggle" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="hidden-xs hidden-sm">Notifications</span> <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </span>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownNotification">
+            <li class="new-not">
+                <a href="#" title="User name comment"><img src="img/user2.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+            </li>
+            <li class="new-not">
+                <a href="#" title="User name comment"><img src="img/user3.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+            </li>
+            <li>
+                <a href="#" title="User name comment"><img src="img/user4.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" title="All notifications">All Notifications</a></li>
+        </ul>
+    </div>
+    <div class="second-icon menu-icon">
+            <span><a href="personal-profile.html" title="Profile"><span class="hidden-xs hidden-sm">Profile</span> <i class="fa fa-user" aria-hidden="true"></i></a>
+            </span>
+    </div>
+    <div class="second-icon menu-icon">
+            <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm">Wall</span> <i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+    </div>
+</header>
+
+<div class="row" style="margin-top:53px">
     <div class="col s12 m12 l12 ">
         <div class="card">
             <div class="card-content text-responsive center-align orange lighten-2">
@@ -78,14 +138,14 @@
             </div>
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a href="#test4"> Upload Image</a></li>
+                    <li class="tab"><a href="#test4"> Upload Audio</a></li>
                     <li class="tab"><a href="#test5">Upload Video</a></li>
 
                 </ul>
             </div>
             <div class="card-content grey lighten-2 center-align">
                 <div id="test4">
-                    Select the image on which you need to run rekognition
+                    Select the Audio file which you need to run rekognition
 
                     <br>
                     <br>
@@ -95,8 +155,8 @@
                     <img id="target" />
 
                     <form>
-                        <input id="src" type="file" name="image" >
-                        <input  class="btn waves-effect hoverable red" id="analyze" type="button" value='Upload Image'>
+                        <input id="src-audio" type="file" name="audio" >
+                        <input  class="btn waves-effect hoverable red" id="analyze-audio" type="button" value='Upload Audio'>
                         <br>
                         <br>
                         <a class="waves-effect waves-light btn modal-trigger" id="modal" style="display: none" href="#modal1">Show Results</a>
@@ -164,209 +224,6 @@
 <br>
 </body>
 
-<script>
-
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-    $(document).ready(function(){
-        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-        $('.modal').modal();
-    });
-    // $("#modal").on("click", function(){
-    //     $.ajax({
-    //       type: "GET",
-    //            url: "/analyze/modal_data",
-    //            success: function(data) {
-    //                console.log(data);
-    //                alert('Success!');
-    //            },
-    //     });
-    // });
-    function showImage(src,target) {
-        var fr=new FileReader();
-        // when image is loaded, set the src of the image where you want to display it
-        fr.onload = function(e) {
-            target.src = this.result;
-
-        };
-        src.addEventListener("change",function() {
-            // fill fr with image data
-            fr.readAsDataURL(src.files[0]);
-        });
-
-    }
-    var src = document.getElementById("src");
-    var target = document.getElementById("target");
-    showImage(src,target);
-    document.getElementById("target").style.width="200px";
-    // console.log(document.getElementById("src").value);
-    $("#analyze").on("click", function(){
-        var path=document.getElementById("src").value;
-        $.ajax({
-            type: "POST",
-            url: "/analyze/amazon-rekog",
-            data: { image: path },
-            success: function(data) {
-                //  console.log(data.Labels[0]);
-
-                alert('Success!');
-
-                document.getElementById("modal").style.display="inline-block";
-                data.Labels.forEach(function(data)
-                {
-                    $('#table-body').append("<tr><th>"+data.Name+"</th><th>"+data.Confidence+"</th></tr>");
-                });
-            },
-
-        });
-    });
-    $("#video").on("click", function(){
-        var path=document.getElementById("video_src").value;
-        var option=document.getElementById("select").value;
-        document.getElementById("modal-video").style.display="none";
-        console.log(path+" "+option);
-        $.ajax({
-            type: "POST",
-            url: "/analyze/video",
-            data: { video: path, type:option },
-            success: function(data) {
-                console.log(data);
-                alert('Success!');
-                document.getElementById("modal-video").style.display = "inline-block";
-                if (option == "1") {
-                    $('#v-modal-table').remove();
-                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Description</th> <th>Start</th> <th>End</th> <th>Confidence</th> </tr> </thead> </table>");
-                    var desc; // description
-                    var start; // startitme
-                    var end;  // end time
-                    var conf; // confidence
-                    data.forEach(function (label) {
-                        desc = label.entity.description + ' occurs at:';
-                        label.segments.forEach(segment => {
-                            let time = segment.segment;
-                            if (time.startTimeOffset.seconds === undefined) {
-                                time.startTimeOffset.seconds = 0;
-                            }
-                            if (time.startTimeOffset.nanos === undefined) {
-                                time.startTimeOffset.nanos = 0;
-                            }
-                            if (time.endTimeOffset.seconds === undefined) {
-                                time.endTimeOffset.seconds = 0;
-                            }
-                            if (time.endTimeOffset.nanos === undefined) {
-                                time.endTimeOffset.nanos = 0;
-                            }
-                            start = time.startTimeOffset.seconds + "."+ (time.startTimeOffset.nanos / 1e6).toFixed(0) + 's';
-                            end = time.endTimeOffset.seconds + "."+(time.endTimeOffset.nanos / 1e6).toFixed(0) + 's';
-                            conf = segment.confidence;
-                        })
-                        $('#v-modal-table').append("<tbody> <tr> <td>" + desc + "</td> <td>" + start + "</td> <td>" + end + "</td> <td>" + conf + "</td> </tr> </tbody>");
-                    });
-                }
-                else if (option == "2") {
-                    $('#v-modal-table').remove();
-                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Description</th> <th>Start</th> <th>End</th> <th>Confidence</th> </tr> </thead> </table>");
-                    var desc; // description
-                    var start; // startitme
-                    var end;  // end time
-                    var conf; // confidence
-                    data.forEach(function (label) {
-                        desc = label.entity.description + ' occurs at:';
-                        label.segments.forEach(segment => {
-                            let time = segment.segment;
-                            if (time.startTimeOffset.seconds === undefined) {
-                                time.startTimeOffset.seconds = 0;
-                            }
-                            if (time.startTimeOffset.nanos === undefined) {
-                                time.startTimeOffset.nanos = 0;
-                            }
-                            if (time.endTimeOffset.seconds === undefined) {
-                                time.endTimeOffset.seconds = 0;
-                            }
-                            if (time.endTimeOffset.nanos === undefined) {
-                                time.endTimeOffset.nanos = 0;
-                            }
-                            start = time.startTimeOffset.seconds + "."+(time.startTimeOffset.nanos / 1e6).toFixed(0) + 's';
-                            end = time.endTimeOffset.seconds + "."+ (time.endTimeOffset.nanos / 1e6).toFixed(0) + 's';
-                            conf = segment.confidence;
-                        })
-                        $('#v-modal-table').append("<tbody> <tr> <td>" + desc + "</td> <td>" + start + "</td> <td>" + end + "</td> <td>" + conf + "</td> </tr> </tbody>");
-                    });
-                }
-                else if (option == "3") {
-                    $('#v-modal-table').remove();
-                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Scene</th> <th>Start</th> <th>End</th> </tr> </thead> </table>");
-                    var scene;
-                    var start;
-                    var end;
-                    if (data.length === 1) {
-                        console.log(`The entire video is one shot.`);
-                    }
-                    else {
-                        data.forEach((shot, shotIdx) => {
-                            scene = "Scene " + shotIdx + " occurs from:"
-                            if(shot.startTimeOffset === undefined
-                            )
-                            {
-                                shot.startTimeOffset = {};
-                            }
-                            if (shot.endTimeOffset === undefined) {
-                                shot.endTimeOffset = {};
-                            }
-                            if (shot.startTimeOffset.seconds === undefined) {
-                                shot.startTimeOffset.seconds = 0;
-                            }
-                            if (shot.startTimeOffset.nanos === undefined) {
-                                shot.startTimeOffset.nanos = 0;
-                            }
-                            if (shot.endTimeOffset.seconds === undefined) {
-                                shot.endTimeOffset.seconds = 0;
-                            }
-                            if (shot.endTimeOffset.nanos === undefined) {
-                                shot.endTimeOffset.nanos = 0;
-                            }
-                            start = shot.startTimeOffset.seconds + "."+(shot.startTimeOffset.nanos / 1e6).toFixed(0) + "s";
-                            end = shot.endTimeOffset.seconds + "."+(shot.endTimeOffset.nanos / 1e6).toFixed(0) + "s";
-                            $('#v-modal-table').append("<tbody> <tr> <td>" + scene + "</td> <td>" + start + "</td> <td>" + end + "</td></tr> </tbody>");
-                        })
-                        ;
-                    }
-                }
-                else if (option == "4") {
-                    $('#v-modal-table').remove();
-                    $('#v-modal').append("<table id='v-modal-table' class='highlight'> <thead> <tr> <th>Time</th> <th>Pornography liklihood</th></tr> </thead> </table>");
-                    var time;
-                    var likelihood;
-                    // Human-readable likelihoods
-                    const likelihoods = [
-                        'UNKNOWN',
-                        'VERY_UNLIKELY',
-                        'UNLIKELY',
-                        'POSSIBLE',
-                        'LIKELY',
-                        'VERY_LIKELY',
-                    ];
-                    data.forEach(result => {
-                        if (result.timeOffset === undefined) {
-                            result.timeOffset = {};
-                        }
-                        if (result.timeOffset.seconds === undefined) {
-                            result.timeOffset.seconds = 0;
-                        }
-                        if (result.timeOffset.nanos === undefined) {
-                            result.timeOffset.nanos = 0;
-                        }
-                        time = result.timeOffset.seconds + "."+(result.timeOffset.nanos / 1e6).toFixed(0) + "s";
-                        likelihood = result.pornographyLikelihood;
-                        $('#v-modal-table').append("<tbody> <tr> <td>" + time + "</td> <td>" + likelihood + "</td></tr> </tbody>");
-                    });
-                }
-            },
-
-        });
-    });
-</script>
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -376,5 +233,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script src="./js/main.js"></script>
+
+<!--//*********************************************-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<!--     <script src="script/script.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 
 </html>
