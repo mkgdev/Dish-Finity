@@ -14,10 +14,6 @@ $('#submiturl').on('click',function(){
     console.log(data);
     console.log(err);
 
-
-
-
-
   });
   $.ajax({url: '/data'}).done(function (data) {
   console.log(data);

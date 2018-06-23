@@ -37,27 +37,27 @@ if (navigator.getUserMedia) {
 
          var url = 'subscribe';
          var data = imgdata;
-        // var ajaxRequest = $.ajax({
-        //     url: "/"+url,
-        //     method: "POST",
-        //     data:data,
-        // });
+        var ajaxRequest = $.ajax({
+            url: "/"+'age',
+            method: "POST",
+            data:data,
+        });
 
-        // ajaxRequest.done(function(data) {
-        //    if(data.ans =='no')
-        //    { 
+        ajaxRequest.done(function(data) {
+           if(data.ans =='no')
+           {
 
-        //     $('#submit').trigger('click');
+            $('#submit').trigger('click');
             
 
-        //    }else{
+           }else{
                
-        //    }
-        // });
+           }
+        });
 
-        // ajaxRequest.fail(function(data) {
+        ajaxRequest.fail(function(data) {
           
-        // });
+        });
 
 
 
