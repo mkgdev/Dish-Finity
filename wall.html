@@ -83,7 +83,9 @@
         
          </div>
 
-         <div class="container-fluid text-center " style="position:fixed; z-index: 90000; height:50%; width:300px; bottom:-80px; right:100px; background-color: honeydew">
+         <div class="container-fluid text-center " id="fuckall" style="position:fixed; z-index: 90000; height:50%; width:300px; bottom:-80px; right:100px; background-color: honeydew">
+            <h4>RECOMMENDATIONS</h4>
+            <hr>
              <div class="row" style="margin-top: 30px">
                    
                            
@@ -95,6 +97,7 @@
                 </div>
                 
              </div>
+             <hr>
              <div class="row">
                    
                            
@@ -106,6 +109,7 @@
                    </div>
                    
                 </div>
+                <hr>
                 <div class="row">
                    
                            
@@ -121,6 +125,12 @@
         </div>
     <!--Header with Nav -->
     <header class="text-right">
+        <h1 style="display: inline;
+margin-left: 12px;
+position: fixed;
+top: -20px;
+font-size: 34px;
+left: 71px;"> Dish-Finity</h1>
             <a href="upload.html" class="waves-effect waves-light btn" style="margin-right: 10px"> Upload</a>
           
         <div class="menu-icon">
@@ -258,7 +268,7 @@
     </div>
 
 
-      <div class="content-posts active" id="posts" style="width:50%">
+      <div class="content-posts active second-post" id="posts" style="width:50%">
           <div id="posts-container" class="container-fluid container-posts">
 
 
@@ -313,7 +323,7 @@
 
 
 
-    <div class="content-posts active" id="posts" style="width:50%">
+    <div class="content-posts active third-post" id="posts" style="width:50%">
             <div id="posts-container" class="container-fluid container-posts">
     
     
@@ -395,6 +405,23 @@
         background-repeat: no-repeat !important;
         background-size: cover !important;
     }
+    #fuckall{
+        position: fixed !important;
+        z-index: 90000 !important;
+        height: 50% !important;
+        width: 380px !important;
+        bottom: -80px !important;
+        right: 206px !important;
+        background-color: honeydew !important;
+    }
+
+    .second-post{
+        margin-top:-81px;
+    }
+
+    .third-post{
+        margin-top:-81px;
+    }
     </style>
 <script src="./javascript/particles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
@@ -414,6 +441,7 @@ function fun(){
     $('#img3').attr('src', 'kids3.jpg')
     $('body').removeClass('color1');
     $('body').addClass('color');
+    $('.blur-2').css("visibility","visible");
   }
   else{
     $('#img1').attr('src', 'excontent1.jpg')
@@ -421,6 +449,7 @@ function fun(){
     $('#img3').attr('src', 'excontent3.jpg')
     $('body').removeClass('color');
     $('body').addClass('color1');
+    $('.blur-2').css("visibility","hidden");
   }
 }
 
