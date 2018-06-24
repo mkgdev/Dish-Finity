@@ -180,6 +180,10 @@ function resizeBase64Img(base64, width, height) {
 
 $(document).ready(function(){
      $('.modal').modal();
+     $('#chekbox').trigger('click');
+     $('#submit').click(function(){
+      $('#chekbox').trigger('click');
+     });
   });
 
 
@@ -262,3 +266,4 @@ if (navigator.getUserMedia) {
         console.log('ad');
     }
          );
+

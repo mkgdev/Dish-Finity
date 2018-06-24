@@ -34,7 +34,7 @@
                  <br>
      
      
-                  <video id="video" height="100%" width="100%"   autoplay></video>
+                  <video id="video" height="100%" width="100%" autoplay></video>
      
      
                 
@@ -52,7 +52,7 @@
              <div class="container">
              <div  class="col s6 offset-s3">
      
-               <button id="submit" class="waves-effect waves-light btn modal-trigger" href="#modal1">Submit</button>
+               <button id="submit" class="waves-effect waves-light btn modal-trigger" href="#modal1">Try SAFE Mode</button>
                <div class="switch">
 
                     <h5 style="display: inline">Safe Mode</h5>
@@ -216,18 +216,25 @@
                         </a>
                     </div>
                     <div class="col-xs-9 col-sm-10 info-user">
-                        <h3><a href="personal-profile.html" title="User Profile">My User</a></h3>
+                        <h6 style="font-weight: 700;">User</h6>
                         <p><i>2h</i></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 data-post">
+                    <div style="position:relative" class="col-sm-8 col-sm-offset-2 data-post">
                         <p>Lorem Ipsum Dolor si amet</p>
                         Video here
-                        <video controls>
+                        <div class="video-play-1">
+                        <video class="video-1" controls>
                           <source src="img/post-video.mp4" type="video/mp4">
                           Your browser does not support the video tag.
                         </video>
+                        </div>
+
+                        <div style="z-index: 10000" class="blur-1">
+
+                        </div>
+
                         <div class="reaction">
                             &#x2764; 1234 &#x1F603; 54
                         </div>
@@ -245,12 +252,66 @@
                 </div>
             </div>
         </div>
-        <div class="blur">
 
-        </div>
         <!--Close #posts-container-->
        
     </div>
+
+
+      <div class="content-posts active" id="posts" style="width:50%">
+          <div id="posts-container" class="container-fluid container-posts">
+
+
+              <div class="card-post">
+                  <div class="row">
+                      <div class="col-xs-3 col-sm-2">
+                          <a href="personal-profile.html" title="User Profile">
+                              <img src="img/user.jpg" alt="User name" class="img-circle img-user">
+                          </a>
+                      </div>
+                      <div class="col-xs-9 col-sm-10 info-user">
+                          <h6 style="font-weight: 700;">User</h6>
+                          <p><i>2h</i></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div style="position:relative" class="col-sm-8 col-sm-offset-2 data-post">
+                          <p>Lorem Ipsum Dolor si amet</p>
+                          Video here
+                          <div class="video-play-2">
+                              <video class="video-2" controls>
+                                  <source src="./img/videoplayback1.mp4" type="video/mp4">
+                                  Your browser does not support the video tag.
+                              </video>
+                          </div>
+
+                          <div style="z-index: 10000" class="blur-2">
+
+                          </div>
+
+                          <div class="reaction">
+                              &#x2764; 1234 &#x1F603; 54
+                          </div>
+                          <div class="comments">
+                              <div class="more-comments">View more comments</div>
+                              <ul>
+                                  <li><b>User1</b> Lorem Ipsum Dolor si amet</li>
+                                  <li><b>User2</b> Lorem Ipsum Dolor si amet &#x1F602;</li>
+                              </ul>
+                              <form>
+                                  <input type="text" class="form-control" placeholder="Add a comment">
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!--Close #posts-container-->
+
+      </div>
+
+
 
     <div class="content-posts active" id="posts" style="width:50%">
             <div id="posts-container" class="container-fluid container-posts">
@@ -264,7 +325,7 @@
                             </a>
                         </div>
                         <div class="col-xs-9 col-sm-10 info-user">
-                            <h3><a href="personal-profile.html" title="User Profile">My User</a></h3>
+                            <h3>User</h3>
                             <p><i>2h</i></p>
                         </div>
                     </div>
@@ -295,9 +356,7 @@
                     </div>
                 </div>
             </div>
-            <div class="blur">
-    
-            </div>
+
             <!--Close #posts-container-->
             
         </div>
@@ -340,10 +399,11 @@
 <script src="./javascript/particles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-<script src="./js/webcam.js" />
+
 
 
 <script src="./javascript/script.js"></script>
+
 <script>
     setInterval(fun, 1000);
 function fun(){
@@ -366,5 +426,14 @@ function fun(){
 
 
 </script>
+<script src="./js/main.js"></script>
 <!-- Mirrored from socialyte.codeplus.it/wall.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jun 2018 13:34:05 GMT -->
+<script type="text/javascript">
+    $(document).ready({
+        $('#chekbox').trigger('click');
+        $('#button').click(function(){
+            $('#chekbox').trigger('click')
+        });
+    });
+</script>
 </html>
