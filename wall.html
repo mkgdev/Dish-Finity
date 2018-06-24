@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -8,26 +7,26 @@
     <title>Wall Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
-    <script src="{% static 'jquery-3.2.0.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-switch.min.css' %}">
-    <script src="{% static 'js/bootstrap-switch.min.js' %}"></script>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css">
+    <script src="lib/jquery-3.2.0.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-switch/css/bootstrap-switch.min.css">
+    <script src="lib/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <script src="https://twemoji.maxcdn.com/twemoji.min.js"></script>
-    <script src="{% static 'js/lazy-load.min.js' %}"></script>
-    <script src="{% static 'js/socialyte.min.js' %}"></script>
+    <script src="js/lazy-load.min.js"></script>
+    <script src="js/socialyte.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    <script src="{% static 'js/particles.js' %}"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="./javascript/particles.js"></script>
 
 </head>
 
 <body id="wall" class="color1">
       
-      
-    <div class="container-fluid text-center " style="position:fixed; z-index: 100000; height:50%; width:50%; top:15%; right:0">
-        <div  class="row ">
+      <div>
+    <div class="container-fluid text-center " style="position:fixed; z-index: 100000; height:40%; width:40%; top:13%; right:0">
+        <div  class="row " style="margin-top: -10px">
            <div  id="col" class="col-xs-12  col-xs-offset-3">
               <div class="well ">
                   <h4></h4>
@@ -53,7 +52,7 @@
              <div class="container">
              <div  class="col s6 offset-s3">
      
-               <button id="submit" class="waves-effect waves-light btn modal-trigger" style="visibility: hidden" href="#modal1">Submit</button>
+               <button id="submit" class="waves-effect waves-light btn modal-trigger" href="#modal1">Submit</button>
                <div class="switch">
 
                     <h5 style="display: inline">Safe Mode</h5>
@@ -84,7 +83,42 @@
         
          </div>
 
-     
+         <div class="container-fluid text-center " style="position:fixed; z-index: 90000; height:50%; width:300px; bottom:-80px; right:100px; background-color: honeydew">
+             <div class="row" style="margin-top: 30px">
+                   
+                           
+                 <div class="col s2">
+                    <img right id="img1" style="height: 50px; width:50px">
+                </div>
+                <div class="col s2" style="margin-left: 10px">
+                    <p>Play video</p>
+                </div>
+                
+             </div>
+             <div class="row">
+                   
+                           
+                    <div class="col s2">
+                       <img right id="img2" style="height: 70px; width:50px">
+                   </div>
+                   <div class="col s2" style="margin-left: 10px">
+                       <p>Play video</p>
+                   </div>
+                   
+                </div>
+                <div class="row">
+                   
+                           
+                        <div class="col s2">
+                           <img right id="img3" style="height: 50px; width:50px">
+                       </div>
+                       <div class="col s2" style="margin-left: 10px">
+                           <p>Play video</p>
+                       </div>
+                       
+                    </div>
+         </div>
+        </div>
     <!--Header with Nav -->
     <header class="text-right">
             <a href="upload.html" class="waves-effect waves-light btn" style="margin-right: 10px"> Upload</a>
@@ -215,9 +249,7 @@
 
         </div>
         <!--Close #posts-container-->
-        <div id="loading">
-            <img src="img/load.gif" alt="loader">
-        </div>
+       
     </div>
 
     <div class="content-posts active" id="posts" style="width:50%">
@@ -305,22 +337,28 @@
         background-size: cover !important;
     }
     </style>
-<script src="{% static 'js/particles.js' %}"></script>
+<script src="./javascript/particles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-<script src="{% static 'js/webcam.js' %}" />
+<script src="./js/webcam.js" />
 
 
-<script src="{% static 'js/script.js' %}"></script>
+<script src="./javascript/script.js"></script>
 <script>
     setInterval(fun, 1000);
 function fun(){
   if($('#chekbox').is(':checked')) {
     //document.getElementById('particles-js').style.backgroundColor('red');
+    $('#img1').attr('src', 'kids1.jpg')
+    $('#img2').attr('src', 'kids2.jpg')
+    $('#img3').attr('src', 'kids3.jpg')
     $('body').removeClass('color1');
     $('body').addClass('color');
   }
   else{
+    $('#img1').attr('src', 'excontent1.jpg')
+    $('#img2').attr('src', 'excontent2.jpg')
+    $('#img3').attr('src', 'excontent3.jpg')
     $('body').removeClass('color');
     $('body').addClass('color1');
   }

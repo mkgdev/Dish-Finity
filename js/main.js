@@ -40,5 +40,23 @@ $('#analyze-video').on('click',function()
     });
 
 })
+$(window).on('load',function () {
+
+    $('video').on('play',function()
+    {
+
+        var width = $('.video-play').width();
+        var height = $('.video-play').height();
+        var position = $('.video-play').position();
+        console.log(position.top);
+
+        $('.blur').height(height);
+        $('.blur').width(height);
+        $('.blur').css("position","absolute");
+        $('.blur').css({top: position.top, left: position.left, position:'absolute', width: width, background:'white',opacity:0.7});
+        //$('.blur').css('background','red');
+
+    });
+});
 
 
