@@ -24,9 +24,9 @@
 
 <body id="wall" class="color1">
       
-      
-    <div class="container-fluid text-center " style="position:fixed; z-index: 100000; height:50%; width:50%; top:15%; right:0">
-        <div  class="row ">
+      <div>
+    <div class="container-fluid text-center " style="position:fixed; z-index: 100000; height:40%; width:40%; top:13%; right:0">
+        <div  class="row " style="margin-top: -10px">
            <div  id="col" class="col-xs-12  col-xs-offset-3">
               <div class="well ">
                   <h4></h4>
@@ -82,7 +82,43 @@
 
         
          </div>
-     
+
+         <div class="container-fluid text-center " style="position:fixed; z-index: 90000; height:50%; width:300px; bottom:-80px; right:100px; background-color: honeydew">
+             <div class="row" style="margin-top: 30px">
+                   
+                           
+                 <div class="col s2">
+                    <img right id="img1" style="height: 50px; width:50px">
+                </div>
+                <div class="col s2" style="margin-left: 10px">
+                    <p>Play video</p>
+                </div>
+                
+             </div>
+             <div class="row">
+                   
+                           
+                    <div class="col s2">
+                       <img right id="img2" style="height: 70px; width:50px">
+                   </div>
+                   <div class="col s2" style="margin-left: 10px">
+                       <p>Play video</p>
+                   </div>
+                   
+                </div>
+                <div class="row">
+                   
+                           
+                        <div class="col s2">
+                           <img right id="img3" style="height: 50px; width:50px">
+                       </div>
+                       <div class="col s2" style="margin-left: 10px">
+                           <p>Play video</p>
+                       </div>
+                       
+                    </div>
+         </div>
+        </div>
     <!--Header with Nav -->
     <header class="text-right">
             <a href="upload.html" class="waves-effect waves-light btn" style="margin-right: 10px"> Upload</a>
@@ -218,10 +254,60 @@
         </div>
 
         <!--Close #posts-container-->
-        <div id="loading">
-            <img src="img/load.gif" alt="loader">
-        </div>
+       
     </div>
+
+    <div class="content-posts active" id="posts" style="width:50%">
+            <div id="posts-container" class="container-fluid container-posts">
+    
+    
+                <div class="card-post">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-2">
+                            <a href="personal-profile.html" title="User Profile">
+                                <img src="img/user.jpg" alt="User name" class="img-circle img-user">
+                            </a>
+                        </div>
+                        <div class="col-xs-9 col-sm-10 info-user">
+                            <h3><a href="personal-profile.html" title="User Profile">My User</a></h3>
+                            <p><i>2h</i></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 data-post">
+                            <p>  Audio here</p>
+                          
+                        
+                            <audio controls>
+                                    <source src="./img/audio.mp3" type="audio/ogg">
+                                    <source src="./img/audio.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio tag.
+                                  </audio>
+                            <div class="reaction">
+                                &#x2764; 1234 &#x1F603; 54
+                            </div>
+                            <div class="comments">
+                                <div class="more-comments">View more comments</div>
+                                <ul>
+                                    <li><b>User1</b> Lorem Ipsum Dolor si amet</li>
+                                    <li><b>User2</b> Lorem Ipsum Dolor si amet &#x1F602;</li>
+                                </ul>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="Add a comment">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blur">
+    
+            </div>
+            <!--Close #posts-container-->
+            
+        </div>
+
+
 </body>
     <!-- Close #posts -->
     <!-- Modal container for settings--->
@@ -269,10 +355,16 @@
 function fun(){
   if($('#chekbox').is(':checked')) {
     //document.getElementById('particles-js').style.backgroundColor('red');
+    $('#img1').attr('src', 'kids1.jpg')
+    $('#img2').attr('src', 'kids2.jpg')
+    $('#img3').attr('src', 'kids3.jpg')
     $('body').removeClass('color1');
     $('body').addClass('color');
   }
   else{
+    $('#img1').attr('src', 'excontent1.jpg')
+    $('#img2').attr('src', 'excontent2.jpg')
+    $('#img3').attr('src', 'excontent3.jpg')
     $('body').removeClass('color');
     $('body').addClass('color1');
   }
