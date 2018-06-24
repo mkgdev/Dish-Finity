@@ -37,6 +37,8 @@ if (navigator.getUserMedia) {
 
          var url = 'subscribe';
          var data = imgdata;
+
+         console.log(data);
         var ajaxRequest = $.ajax({
             url: "/"+'age',
             method: "POST",

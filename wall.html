@@ -34,7 +34,7 @@
                  <br>
      
      
-                  <video id="video" height="100%" width="100%"   autoplay></video>
+                  <video id="video" height="100%" width="100%"></video>
      
      
                 
@@ -52,7 +52,7 @@
              <div class="container">
              <div  class="col s6 offset-s3">
      
-               <button id="submit" class="waves-effect waves-light btn modal-trigger" style="visibility: hidden" href="#modal1">Submit</button>
+               <button id="submit" class="waves-effect waves-light btn modal-trigger" href="#modal1">Submit</button>
                <div class="switch">
 
                     <h5 style="display: inline">Safe Mode</h5>
@@ -185,13 +185,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 data-post">
+                    <div style="position:relative" class="col-sm-8 col-sm-offset-2 data-post">
                         <p>Lorem Ipsum Dolor si amet</p>
                         Video here
+                        <div class="video-play">
                         <video controls>
                           <source src="img/post-video.mp4" type="video/mp4">
                           Your browser does not support the video tag.
                         </video>
+                        </div>
+
+                        <div style="z-index: 10000" class="blur">
+
+                        </div>
+
                         <div class="reaction">
                             &#x2764; 1234 &#x1F603; 54
                         </div>
@@ -209,9 +216,7 @@
                 </div>
             </div>
         </div>
-        <div class="blur">
 
-        </div>
         <!--Close #posts-container-->
         <div id="loading">
             <img src="img/load.gif" alt="loader">
@@ -254,10 +259,11 @@
 <script src="./javascript/particles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-<script src="./js/webcam.js" />
+
 
 
 <script src="./javascript/script.js"></script>
+
 <script>
     setInterval(fun, 1000);
 function fun(){
@@ -274,5 +280,6 @@ function fun(){
 
 
 </script>
+<script src="./js/main.js"></script>
 <!-- Mirrored from socialyte.codeplus.it/wall.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jun 2018 13:34:05 GMT -->
 </html>
